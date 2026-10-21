@@ -35,10 +35,10 @@ module optimisedmultiplier(
             else if (count > 0) begin
                 // Step 1 & 2: Conditional Add
                 if (Q[0]) begin
-							{C, A} <= {1'b0, A} + {1'b0, M}; // Addition happens, carry goes to C
-					end else begin
-						{C, A} <= {1'b0, A};             // C becomes 0, and A passes through unchanged
-end
+                    sum = {1'b0, A} + {1'b0, M};
+                end else begin
+                    sum = {1'b0, A};
+                end
 
                 // Step 3: Shift Right combined {C, A, Q} chain
                 C <= 1'b0;
