@@ -1,4 +1,4 @@
-module optimisedmultiplier(
+module optimisedmultipler(
     input  wire        clk,
     input  wire        rst,
     input  wire [3:0]  multiplier,
@@ -35,15 +35,15 @@ module optimisedmultiplier(
             else if (count > 0) begin
                 // Step 1 & 2: Conditional Add
                 if (Q[0]) begin
-                    sum = {1'b0, A} + {1'b0, M};
+                   {C,A} <= {1'b0, A} + {1'b0, M};
                 end else begin
-                    sum = {1'b0, A};
+                    {C,A} <= {1'b0, A};
                 end
 
                 // Step 3: Shift Right combined {C, A, Q} chain
                 C <= 1'b0;
-                A <= {sum[4], sum[3:1]};
-                Q <= {sum[0], Q[3:1]};
+                A <= {C, A[3:1]};
+                Q <= {A[0], Q[3:1]};
 
                 count <= count - 1'b1;
 
