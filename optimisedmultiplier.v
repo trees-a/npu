@@ -50,7 +50,7 @@ module optimisedmultipler(
                 // Check if this was the 4th and final cycle
                 if (count == 3'd1) begin
                     done    <= 1'b1;
-                    product <= { {sum[4], sum[3:1]}, {sum[0], Q[3:1]} };
+                    product <= { A,C,Q};
                 end
             end
         end
